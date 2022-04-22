@@ -1,0 +1,25 @@
+<ion-item *ngIf="message" [routerLink]="'/message/' + message.ID_REGION" [detail]="false">
+  <div slot="start" [class]="!message.read ? 'dot dot-unread' : 'dot'"></div>
+  <ion-label class="ion-text-wrap">
+    <h2>
+      {{ message.NOMBRE}}
+      <span class="date">
+        <ion-note>
+        </ion-note>
+        <ion-icon name="chevron-forward" size="small" *ngIf="isIos()"></ion-icon>
+      </span>
+    </h2>
+    <p>
+      <ion-badge color="light">Confirmados totales: {{message.TOTALES}}</ion-badge>
+      <br/>
+      <ion-badge color="medium">Nuevos: {{message.NUEVOS}}</ion-badge>
+      <br/>
+      <ion-badge color="warning">Sin síntomas: {{message.ASINTOMATICOS}}</ion-badge>
+      <br/>
+      <ion-badge color="danger">Con síntomas: {{message.SINTOMATICOS}}</ion-badge>
+      <br/>
+      <ion-badge color="dark">Fallecidos Totales: {{message.FALLECIDOS}}</ion-badge>
+
+    </p>
+  </ion-label>
+  </ion-item>

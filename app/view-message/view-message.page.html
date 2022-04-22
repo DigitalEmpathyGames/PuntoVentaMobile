@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="large" *ngIf="comunas" >
+      {{fecha | date: 'dd/MM/yyyy'}} 
+      <br/>
+
+        <strong>Región : {{nombreRegion}} </strong>
+
+      <br/>
+        (última actualización)
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  *ngIf="loadingInfo">
+  <ion-progress-bar type="indeterminate" color="medium"></ion-progress-bar>
+</ion-content>
+
+<ion-content [fullscreen]="true" *ngIf="comunas">
+  <ion-list lines="inset">
+    <ion-item *ngFor="let comuna of comunas">
+      <ion-label>
+        <h1>
+          <strong>
+          {{ comuna.COMUNA}}
+          </strong>
+        </h1>
+        <p>
+          <ion-badge color="light">Confirmados totales: {{comuna.TOTALES}}</ion-badge>
+          <br/>
+          <ion-badge color="danger">Aún con virus: {{comuna.ACTIVOS}}</ion-badge>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list> 
+</ion-content>
+
+<ion-content *ngIf="error">
+  <p>
+    ha ocurrido un error :C
+  <br/>
+    {{error}}
+  </p>
+</ion-content>
+
+

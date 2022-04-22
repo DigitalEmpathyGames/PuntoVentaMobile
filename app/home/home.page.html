@@ -1,0 +1,34 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title size="large">
+      Regiones ( {{fecha | date: 'dd/MM/yyyy'}} )
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-content  *ngIf="loadingInfo">
+    <ion-progress-bar type="indeterminate" color="medium"></ion-progress-bar>
+  </ion-content>
+  <ion-list>
+    <!-- <app-message *ngFor="let message of getMessages()" [message]="message"></app-message> -->
+    <app-message *ngFor="let region of getRegiones()" [message]="region"></app-message>
+  </ion-list>
+
+  <ion-content  *ngIf="error">
+    <p>
+      ha ocurrido un error :C
+    </p>
+    <p>
+      {{error.mensaje}}
+    </p>
+  </ion-content>
+
+</ion-content>
+<ion-footer  *ngIf="mensaje">
+  <ion-toolbar>
+    <p>
+      {{mensaje}}
+    </p>
+  </ion-toolbar>
+</ion-footer>
